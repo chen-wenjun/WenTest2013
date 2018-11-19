@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="jstz.js"></script>
+</head>
+<body>
+    <input id="dateInput" type="text" value="2017-02-15T18:18:18Z" />
+    <input id="showDate" type="button" value="Show Date" onclick="ShowDate();" />
+    <div id="dateInputLocal"></div>
+    <div id="dateInputLocalAsIs"></div>
+<input id="dateAsIsCalendar" type="datetime" size="80"/>
+    <input id="dateAsIsCalendarLocal" type="datetime-local" size="80" />
+    <script type="text/javascript">
+        //var counter = 1;
+        //var interval = setInterval(function() {
+        //        document.getElementById('testArea').innerHTML = counter + ": " + jstz.determine().name() + "<br/>";
+        //        counter++;
+        //    },
+        //    2000);
+
+        function ShowDate() {
+            var dateInput = document.getElementById('dateInput').value;
+
+
+            var date = new Date(dateInput);
+            document.getElementById('dateInputLocal').innerHTML = "[" + date.toString() + "] => Local time";
+
+
+            date.setFullYear(date.getUTCFullYear());
+            date.setMonth(date.getUTCMonth());
+            date.setDate(date.getUTCDate());
+            date.setHours(date.getUTCHours());
+            date.setMinutes(date.getUTCMinutes());
+            date.setSeconds(date.getUTCSeconds());
+            date.setMilliseconds(date.getUTCMilliseconds());
+
+            document.getElementById('dateInputLocalAsIs').innerHTML = "[" + date.toString() + "] => Local time AS IS";
+            document.getElementById('dateAsIsCalendar').value = date;
+            document.getElementById('dateAsIsCalendarLocal').value = "2017-02-15T18:18:18";
+        }
+
+        ShowDate();
+    </script>
+
+</body>
+</html>
